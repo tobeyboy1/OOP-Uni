@@ -1,0 +1,3 @@
+﻿  test.cpp
+E:\OOP-Uni\lab1 - Financial status\lab1 - Financial status\test.cpp(13,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  lab1 - Financial status.vcxproj -> E:\OOP-Uni\lab1 - Financial status\x64\Debug\lab1 - Financial status.exe
