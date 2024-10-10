@@ -1,22 +1,19 @@
-#include <iostream>
 
+#define _CRT_SECURE_NO_WARNINGS
+#include "TaxpayerStatus.h"
 
-int m1(int& f) {
-
-	//char* mm = new char[strlen(b)] ;
-	//mm = b;
-	unsigned int k = f;
-	//mm = b;
-	return k;
-}
 
 void main() {
-	char a[] = "g11";
-	if (isalpha(a[1])) {
-		std::cout << "yes";
+	setlocale(LC_ALL, "ru");
+
+	try {
+		Taxpayer Oleg("223453330151", 2005);
+		Oleg.AddIncome(1000, false);
+		Oleg.AddIncome(1000, true);
+		Oleg.ShowTaxpayer();
+
 	}
-	char g = 'f';
-	int j = -10;
-	std::cout << m1(j);
-	//delete[] a;
+	catch (std::exception catchedException) {
+		std::cout << catchedException.what();
+	}
 }
