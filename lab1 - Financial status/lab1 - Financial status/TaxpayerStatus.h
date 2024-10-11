@@ -6,34 +6,53 @@
 
 //using namespace std;
 
-const unsigned int INN_size = 12;
+
+
+enum YearLimits {
+	max_year = 2024,
+	min_year = 1900
+};
 
 class Taxpayer {
 private:
-	char* INN = NULL;
-	int year = -1;
-	int income_with_tax = 0;
-	int income_without_tax = 0;
-	int sum_tax = -1;
-	int sum_income = -1;
 
-	const double income_tax_percentage = 0.13;
+	char* INN = NULL; // ругался когда поставил размер ИНН над самим ИНН
+
+	const unsigned int INN_size = 12;
+
+	int year = -1;
+	float income_with_tax = 0;
+	float income_without_tax = 0;
+	double sum_tax = -1;
+	double sum_income = -1;
+
+	const double income_tax_percentage = 0.13; //преобразовывал float в double, пришлось менять на double
 
 	void SumTaxCalrulator() {
-		sum_tax = float(income_with_tax) * income_tax_percentage;
+		sum_tax = double(income_with_tax) * income_tax_percentage;
 	}
 
 	void SumIncomeCalrulator() {
-		sum_income = float(income_with_tax) * (1 - income_tax_percentage) + income_without_tax;
+		sum_income = double(income_with_tax) * (1 - income_tax_percentage) + double(income_without_tax);
 	}
 
 
 public:
-	Taxpayer(const char *temp_INN, int temp_year) {
+	Taxpayer(const char *temp_INN, const int& temp_year) {
 
-		if (temp_year < 0 || temp_year >(pow(10,4))) {
+		if (temp_year < min_year && temp_year >= 0) {
 			std::cout << temp_year << std::endl;
-			throw std::exception("Ошибка: указан неверный год");
+			throw std::exception("Ошибка: нельзя указать год меньше 1900-го");
+		}
+
+		if (temp_year > max_year) {
+			std::cout << temp_year << std::endl;
+			throw std::exception("Ошибка: нельзя указать год больше 2024-го");
+		}
+
+		if (temp_year < 0) {
+			std::cout << temp_year << std::endl;
+			throw std::exception("Ошибка: нельзя указать отрицательный год");
 		}
 
 		year = temp_year;
@@ -55,7 +74,8 @@ public:
 
 	}
 
-	void AddIncome(int temp_income, bool with_tax) {
+	void AddIncome(const float &temp_income, bool with_tax) { //почему-то при вводе параметров даёт ввести число + забыл что сказали про именование флагов
+
 		if (temp_income < 0) {
 			throw std::exception("Ошибка: доход не может быть отрицательным");
 		}
@@ -70,7 +90,7 @@ public:
 		SumIncomeCalrulator();
 	}
 
-	void ShowTaxpayer() {
+	void ShowTaxpayer() const{
 		std::cout << "ИНН: " << GetINN() << std::endl;
 		std::cout << "Год: " << GetYear() << std::endl;
 		std::cout << "Налогооблагаемый доход: " << GetIncome_WithTax() << std::endl;
@@ -79,30 +99,30 @@ public:
 		std::cout << "Сумма доходов: " << GetSumIncome() << std::endl;
 	}
 
-	const char* GetINN() {
+	char* GetINN() const {
 		return INN;
 	}
 
-	const int GetYear() {
+	int GetYear() const {
 		return year;
 	}
 
-	const int GetIncome_WithTax() {
+	float GetIncome_WithTax() const {
 		return income_with_tax;
 	}
 
-	const int GetIncome_WithoutTax() {
+	float GetIncome_WithoutTax() const {
 		return income_without_tax;
 	}
 
-	const int GetSumTax() {
+	double GetSumTax() const {
 		return sum_tax;
 	}
 
-	const int GetSumIncome() {
+	double GetSumIncome() const {
 		return sum_income;
 	}
-	const float GetIncomeTaxPercentage() {
+	double GetIncomeTaxPercentage() const {
 		return income_tax_percentage;
 	}
 

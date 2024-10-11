@@ -1,12 +1,2 @@
 ﻿  test.cpp
-E:\OOP-Uni\lab1 - Financial status\lab1 - Financial status\TaxpayerStatus.h(23,36): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-  (компиляция исходного файла "test.cpp")
-  
-E:\OOP-Uni\lab1 - Financial status\lab1 - Financial status\TaxpayerStatus.h(27,69): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-  (компиляция исходного файла "test.cpp")
-  
-E:\OOP-Uni\lab1 - Financial status\lab1 - Financial status\TaxpayerStatus.h(106,10): warning C4244: return: преобразование "const double" в "const float", возможна потеря данных
-  (компиляция исходного файла "test.cpp")
-  
-E:\OOP-Uni\lab1 - Financial status\lab1 - Financial status\test.cpp(6,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
   lab1 - Financial status.vcxproj -> E:\OOP-Uni\lab1 - Financial status\x64\Debug\lab1 - Financial status.exe
