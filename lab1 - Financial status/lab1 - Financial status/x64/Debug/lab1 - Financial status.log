@@ -1,3 +1,12 @@
-﻿  main.cpp
-Z:\Акимов\OOP-Uni\lab1 - Financial status\lab1 - Financial status\TaxpayerStatus.h(43,13): warning C4114: Множественное использование одного и того же квалификатора типа.
-  lab1 - Financial status.vcxproj -> Z:\Акимов\OOP-Uni\lab1 - Financial status\x64\Debug\lab1 - Financial status.exe
+﻿  TaxpayerStatus.cpp
+E:\OOP-Uni\lab1 - Financial status\lab1 - Financial status\TaxpayerStatus.h(43,13): warning C4114: Множественное использование одного и того же квалификатора типа.
+  (компиляция исходного файла "TaxpayerStatus.cpp")
+  
+E:\OOP-Uni\lab1 - Financial status\lab1 - Financial status\TaxpayerStatus.cpp(32,20): warning C4018: <: несоответствие типов со знаком и без знака
+E:\OOP-Uni\lab1 - Financial status\lab1 - Financial status\TaxpayerStatus.cpp(71,12): warning C4114: Множественное использование одного и того же квалификатора типа.
+  main.cpp
+E:\OOP-Uni\lab1 - Financial status\lab1 - Financial status\TaxpayerStatus.h(43,13): warning C4114: Множественное использование одного и того же квалификатора типа.
+  (компиляция исходного файла "main.cpp")
+  
+  Создание кода...
+  lab1 - Financial status.vcxproj -> E:\OOP-Uni\lab1 - Financial status\x64\Debug\lab1 - Financial status.exe

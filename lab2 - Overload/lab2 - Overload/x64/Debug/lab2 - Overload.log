@@ -1,0 +1,15 @@
+﻿  main.cpp
+E:\OOP-Uni\lab2 - Overload\lab2 - Overload\TaxpayerStatus.h(51,13): warning C4114: Множественное использование одного и того же квалификатора типа.
+  (компиляция исходного файла "main.cpp")
+  
+  TaxpayerStatus.cpp
+E:\OOP-Uni\lab2 - Overload\lab2 - Overload\TaxpayerStatus.h(51,13): warning C4114: Множественное использование одного и того же квалификатора типа.
+  (компиляция исходного файла "TaxpayerStatus.cpp")
+  
+E:\OOP-Uni\lab2 - Overload\lab2 - Overload\TaxpayerStatus.cpp(68,20): warning C4018: <: несоответствие типов со знаком и без знака
+E:\OOP-Uni\lab2 - Overload\lab2 - Overload\TaxpayerStatus.cpp(109,43): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+E:\OOP-Uni\lab2 - Overload\lab2 - Overload\TaxpayerStatus.cpp(124,27): warning C4244: аргумент: преобразование "const double" в "const float", возможна потеря данных
+E:\OOP-Uni\lab2 - Overload\lab2 - Overload\TaxpayerStatus.cpp(128,12): warning C4114: Множественное использование одного и того же квалификатора типа.
+E:\OOP-Uni\lab2 - Overload\lab2 - Overload\TaxpayerStatus.cpp(159,23): warning C4244: return: преобразование "double" в "int", возможна потеря данных
+  Создание кода...
+  lab2 - Overload.vcxproj -> E:\OOP-Uni\lab2 - Overload\x64\Debug\lab2 - Overload.exe
