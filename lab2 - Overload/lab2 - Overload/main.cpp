@@ -1,7 +1,5 @@
-
 //#define _CRT_SECURE_NO_WARNINGS
 #include "TaxpayerStatus.h"
-
 
 int main() {
 
@@ -18,12 +16,12 @@ int main() {
 
 		oleg.AddIncome(1000, false); //можно вместо флага писать число, как исправить внутри класса не придумал
 		oleg.AddIncome(1000, true);
-		oleg.AddIncomeAfterTax(87);
-		oleg >> 871;
+		oleg.AddIncome(87);
+		oleg >> 5453 >> 14567;
 		oleg.ShowTaxpayer();
 
-		sum_all_tax += oleg;
-		sum_all_tax += vova;
+		(sum_all_tax += oleg) += vova;
+		//sum_all_tax += vova;
 
 		std::cout << "Общая сумма налогов = " << sum_all_tax << std::endl;
 	}

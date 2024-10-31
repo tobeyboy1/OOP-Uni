@@ -3,7 +3,10 @@
 //#include <exception>
 //#include <locale>
 #include <iostream>
-
+#include <chrono>
+#include <time.h> 
+#include <sstream>
+//#include <iomanip>
 //using namespace std;
 
 
@@ -13,14 +16,21 @@
 class Taxpayer {
 private:
 
-	enum YearLimits {
-		max_year = 2024,
+	// получение текущей даты-времени 
+
+	static const unsigned int SPAN_OF_YEARS = 124;
+
+	const int max_year = getCurrentYear();
+	const int min_year = max_year - SPAN_OF_YEARS;
+
+	/*enum YearLimits {
+		max_year = getCurrentDayTime(),
 		min_year = 1900
-	};
+	};*/
 
 	char* INN = NULL; // ругалс€ когда поставил размер »ЌЌ над самим »ЌЌ
 
-	const unsigned int INN_SIZE = 12;
+	static const unsigned int INN_SIZE = 12;
 
 	int year = -1;
 	float income_with_tax = 0;
@@ -30,9 +40,11 @@ private:
 
 	const double income_tax_percentage = 0.13; //преобразовывал float в double, пришлось мен€ть на double
 
-	void SumTaxCalrulator();
+	const int getCurrentYear();
 
-	void SumIncomeCalrulator();
+	void sumTaxCalculator();
+
+	void sumIncomeCalculator();
 
 
 public:
@@ -42,19 +54,19 @@ public:
 
 	void AddIncome(const float &temp_income, bool with_tax);
 
-	void AddIncomeAfterTax(const float& temp_income_after_tax);
+	void AddIncome(const float& temp_income_after_tax);
 
 	void ShowTaxpayer() const;
 
-	void operator >> (const double& temp_income_after_tax);
+	Taxpayer& operator >> (const double& temp_income_after_tax);
 
 	const char const* GetINN() const;
 
 	int GetYear() const;
 
-	float GetIncome_WithTax() const;
+	float GetIncomeWithTax() const;
 
-	float GetIncome_WithoutTax() const;
+	float GetIncomeWithoutTax() const;
 
 	double GetSumTax() const;
 
@@ -65,4 +77,4 @@ public:
 	~Taxpayer();
 };
 
-int operator += (double& sum_all_tax, Taxpayer& target_taxpayer); // не уверен что стоило помещать перегрузку оператора вне класса сюда же
+double& operator += (double& sum_all_tax, Taxpayer& target_taxpayer); // не уверен что стоило помещать перегрузку оператора вне класса сюда же

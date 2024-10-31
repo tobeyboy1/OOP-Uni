@@ -1,11 +1,26 @@
 #include "TaxpayerStatus.h"
 
+const int Taxpayer::getCurrentYear() {
 
-void Taxpayer::SumTaxCalrulator() {
+	const int BEGIN_OF_COUNT = 1900;
+
+	tm currentDayTime;
+	int currentYear;
+	//получаем текущее время-дату 
+	std::chrono::system_clock::time_point nowDateTime = std::chrono::system_clock::now();
+
+	time_t intermediateDayTime = std::chrono::system_clock::to_time_t(nowDateTime);
+	// рассчитываем время по текущему часовому поясу 
+	localtime_s(&currentDayTime, &intermediateDayTime);
+	currentYear = BEGIN_OF_COUNT + currentDayTime.tm_year;
+	return currentYear;
+}
+
+void Taxpayer::sumTaxCalculator() {
 	sum_tax = (double)income_with_tax * income_tax_percentage;
 }
 
-void Taxpayer::SumIncomeCalrulator() {
+void Taxpayer::sumIncomeCalculator() {
 	sum_income = double(income_with_tax) * (1 - income_tax_percentage) + double(income_without_tax);
 }
 
@@ -25,6 +40,11 @@ Taxpayer::Taxpayer(const char* temp_INN, const int& temp_year) {
 	if (temp_year < 0) {
 		throw std::exception("Ошибка: нельзя указать отрицательный год");
 	}
+
+	if (temp_INN == nullptr) {
+		throw std::exception("Ошибка: ИНН не может быть нулевым указателем");
+	}
+
 	if (strlen(temp_INN) != INN_SIZE) {
 		throw std::exception("Ошибка: указан неверный размер ИНН (размер должен составлять 12 символов)");
 
@@ -55,15 +75,15 @@ Taxpayer::Taxpayer(const char* temp_INN, const int& temp_year) {
 	else {
 		income_with_tax += temp_income;
 	}
-	SumTaxCalrulator();
-	SumIncomeCalrulator();
+	sumTaxCalculator();
+	sumIncomeCalculator();
 }
 
  void Taxpayer::ShowTaxpayer() const {
 	 std::cout << "ИНН: " << GetINN() << std::endl;
 	 std::cout << "Год: " << GetYear() << std::endl;
-	 std::cout << "Налогооблагаемый доход: " << GetIncome_WithTax() << std::endl;
-	 std::cout << "Неналогооблагаемый доход: " << GetIncome_WithoutTax() << std::endl;
+	 std::cout << "Налогооблагаемый доход: " <<  GetIncomeWithTax() << std::endl;
+	 std::cout << "Неналогооблагаемый доход: " <<  GetIncomeWithoutTax() << std::endl;
 	 std::cout << "Сумма подоходного налога: " << GetSumTax() << std::endl;
 	 std::cout << "Сумма доходов: " << GetSumIncome() << std::endl;
  }
@@ -75,11 +95,11 @@ int Taxpayer::GetYear() const {
 	return year;
 }
 
- float Taxpayer::GetIncome_WithTax() const {
+ float Taxpayer:: GetIncomeWithTax() const {
 	 return income_with_tax;
  }
 
- float Taxpayer::GetIncome_WithoutTax() const {
+ float Taxpayer:: GetIncomeWithoutTax() const {
 	 return income_without_tax;
  }
 
