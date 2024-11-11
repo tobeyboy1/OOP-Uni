@@ -1,0 +1,8 @@
+﻿  main.cpp
+E:\OOP-Uni\lab3 - Inheritance\lab3 -\TaxpayerStatus.h(61,13): warning C4114: Множественное использование одного и того же квалификатора типа.
+  (компиляция исходного файла "main.cpp")
+  
+E:\OOP-Uni\lab3 - Inheritance\lab3 -\PropertyTaxDeduction.h(8,33): warning C4244: инициализация: преобразование "double" в "const int", возможна потеря данных
+  (компиляция исходного файла "main.cpp")
+  
+  lab3 -.vcxproj -> E:\OOP-Uni\lab3 - Inheritance\x64\Debug\lab3 -.exe

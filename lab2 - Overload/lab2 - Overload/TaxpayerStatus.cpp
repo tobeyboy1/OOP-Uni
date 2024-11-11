@@ -65,7 +65,7 @@ void Taxpayer::sumIncomeCalculator() {
 Taxpayer::Taxpayer(const char* temp_INN, const int& temp_year, const float& temp_income_without_tax, const float& temp_income_with_tax) {
 
 	if (temp_year < min_year) {
-		throw std::exception("Ошибка: нельзя указать год меньше 1900-го");
+		throw std::exception("Ошибка: нельзя указать год меньше 1900-го" + 1);
 	}
 
 	if (temp_year > max_year) {

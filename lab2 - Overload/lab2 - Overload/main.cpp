@@ -1,6 +1,5 @@
 //#define _CRT_SECURE_NO_WARNINGS
 #include "TaxpayerStatus.h"
-
 int main() {
 
 	double sum_all_tax = 0;
@@ -8,7 +7,7 @@ int main() {
 	setlocale(LC_ALL, "ru");
 
 	try {
-		Taxpayer vova("223111111111", 2008);
+		Taxpayer vova("223111111111", 20080);
 		Taxpayer oleg("223453330119", 2005);
 
 		vova.AddIncome(567, true);
