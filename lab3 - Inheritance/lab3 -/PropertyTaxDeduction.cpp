@@ -2,14 +2,21 @@
 
 void PropertyTaxDeduction::sumDeductionCalculator() {
 
-	if (housing_cost > max_housing_cost) {
-		sum_deduction = max_housing_cost * 0.13;
+	if (housing_cost > MAX_HOUSING_COST) {
+		sum_deduction = MAX_HOUSING_COST * 0.13;
 	}
 
 	else if (housing_cost > 0) {
 		sum_deduction = housing_cost * 0.13;
 	}
+
+	if (sum_deduction > sum_tax) {
+		sum_deduction = sum_tax;
+	}
 }
+
+PropertyTaxDeduction::PropertyTaxDeduction(const char* temp_INN, const int& temp_year, const float& temp_income_without_tax, const float& temp_income_with_tax) :
+	Taxpayer(temp_INN, temp_year, temp_income_without_tax, temp_income_with_tax) {}
 
 void PropertyTaxDeduction::SetHousingCost(double temp_housing_cost) {
 
@@ -23,12 +30,14 @@ void PropertyTaxDeduction::SetHousingCost(double temp_housing_cost) {
 }
 
 void PropertyTaxDeduction::ShowTaxpayer() const {
-	std::cout << "ИНН: " << GetINN() << std::endl;
-	std::cout << "Год: " << GetYear() << std::endl;
-	std::cout << "Налогооблагаемый доход: " << GetIncomeWithTax() << std::endl;
-	std::cout << "Неналогооблагаемый доход: " << GetIncomeWithoutTax() << std::endl;
-	std::cout << "Сумма подоходного налога: " << GetSumTax() << std::endl;
-	std::cout << "Сумма доходов: " << GetSumIncome() << std::endl;
+	//std::cout << "ИНН: " << GetINN() << std::endl;
+	//std::cout << "Год: " << GetYear() << std::endl;
+	//std::cout << "Налогооблагаемый доход: " << GetIncomeWithTax() << std::endl;
+	//std::cout << "Неналогооблагаемый доход: " << GetIncomeWithoutTax() << std::endl;
+	//std::cout << "Сумма подоходного налога: " << GetSumTax() << std::endl;
+	//std::cout << "Сумма доходов: " << GetSumIncome() << std::endl;
+
+	Taxpayer::ShowTaxpayer();
 	std::cout << "Стоимость жилья: " << GetHousingCost() << std::endl;
 	std::cout << "Cумма вычета: " << GetSumDeduction() << std::endl << std::endl;
 }

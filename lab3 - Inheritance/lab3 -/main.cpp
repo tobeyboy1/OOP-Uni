@@ -29,6 +29,7 @@ int main() {
 		std::cout << "Общая сумма налогов = " << sum_all_tax << std::endl << std::endl;
 
 		PropertyTaxDeduction artem("777753330119", 2000, 90000, 100000);
+		artem.AddIncome(100000, false);
 		artem.SetHousingCost(3500000);
 		artem.ShowTaxpayer();
 

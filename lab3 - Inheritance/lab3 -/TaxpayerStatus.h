@@ -31,7 +31,6 @@ private:
 	int year = -1;
 	float income_with_tax = 0;
 	float income_without_tax = 0;
-	double sum_tax = 0;
 	double sum_income = 0;
 
 	const double income_tax_percentage = 0.13; //преобразовывал float в double, пришлось менять на double
@@ -42,6 +41,9 @@ private:
 
 	void sumIncomeCalculator();
 
+protected:
+
+	double sum_tax = 0;
 
 public:
 	//Taxpayer(const char* temp_INN, const int& temp_year);
