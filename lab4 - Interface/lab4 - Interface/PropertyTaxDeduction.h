@@ -1,7 +1,7 @@
 #pragma once
 #include "TaxpayerStatus.h"
 
-class PropertyTaxDeduction : public Taxpayer{
+class PropertyTaxDeduction final : public Taxpayer {
 
 private:
 

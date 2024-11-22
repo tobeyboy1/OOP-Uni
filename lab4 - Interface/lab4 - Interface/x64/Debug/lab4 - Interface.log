@@ -1,32 +1,10 @@
 ﻿  PropertyTaxDeduction.cpp
-E:\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxServiceInform.h(6,21): warning C4114: Множественное использование одного и того же квалификатора типа.
-  (компиляция исходного файла "PropertyTaxDeduction.cpp")
-  
-E:\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxpayerStatus.h(64,13): warning C4114: Множественное использование одного и того же квалификатора типа.
-  (компиляция исходного файла "PropertyTaxDeduction.cpp")
-  
-E:\OOP-Uni\lab4 - Interface\lab4 - Interface\PropertyTaxDeduction.h(8,33): warning C4244: инициализация: преобразование "double" в "const int", возможна потеря данных
-  (компиляция исходного файла "PropertyTaxDeduction.cpp")
-  
-  TaxpayerStatus.cpp
-E:\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxServiceInform.h(6,21): warning C4114: Множественное использование одного и того же квалификатора типа.
-  (компиляция исходного файла "TaxpayerStatus.cpp")
-  
-E:\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxpayerStatus.h(64,13): warning C4114: Множественное использование одного и того же квалификатора типа.
-  (компиляция исходного файла "TaxpayerStatus.cpp")
-  
-E:\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxpayerStatus.cpp(97,43): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-E:\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxpayerStatus.cpp(112,19): warning C4244: аргумент: преобразование "const double" в "const float", возможна потеря данных
-E:\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxpayerStatus.cpp(116,12): warning C4114: Множественное использование одного и того же квалификатора типа.
+Z:\Акимов\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxServiceInform.h(6,21): warning C4114: Множественное использование одного и того же квалификатора типа.
+Z:\Акимов\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxpayerStatus.h(64,21): warning C4114: Множественное использование одного и того же квалификатора типа.
+Z:\Акимов\OOP-Uni\lab4 - Interface\lab4 - Interface\PropertyTaxDeduction.h(8,33): warning C4244: инициализация: преобразование "double" в "const int", возможна потеря данных
   main.cpp
-E:\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxServiceInform.h(6,21): warning C4114: Множественное использование одного и того же квалификатора типа.
-  (компиляция исходного файла "main.cpp")
-  
-E:\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxpayerStatus.h(64,13): warning C4114: Множественное использование одного и того же квалификатора типа.
-  (компиляция исходного файла "main.cpp")
-  
-E:\OOP-Uni\lab4 - Interface\lab4 - Interface\PropertyTaxDeduction.h(8,33): warning C4244: инициализация: преобразование "double" в "const int", возможна потеря данных
-  (компиляция исходного файла "main.cpp")
-  
+Z:\Акимов\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxServiceInform.h(6,21): warning C4114: Множественное использование одного и того же квалификатора типа.
+Z:\Акимов\OOP-Uni\lab4 - Interface\lab4 - Interface\TaxpayerStatus.h(64,21): warning C4114: Множественное использование одного и того же квалификатора типа.
+Z:\Акимов\OOP-Uni\lab4 - Interface\lab4 - Interface\PropertyTaxDeduction.h(8,33): warning C4244: инициализация: преобразование "double" в "const int", возможна потеря данных
   Создание кода...
-  lab4 - Interface.vcxproj -> E:\OOP-Uni\lab4 - Interface\x64\Debug\lab4 - Interface.exe
+  lab4 - Interface.vcxproj -> Z:\Акимов\OOP-Uni\lab4 - Interface\x64\Debug\lab4 - Interface.exe

@@ -14,7 +14,7 @@
 
 
 #define DEBUG
-class Taxpayer {
+class Taxpayer : public TaxServiceInformation {
 private:
 
 	// получение текущей даты-времени 
@@ -57,25 +57,25 @@ public:
 
 	void AddIncome(const float& temp_income_after_tax);
 
-	virtual void ShowTaxpayer() const;
+	virtual void ShowTaxpayer() const override;
 
 	Taxpayer& operator >> (const double& temp_income_after_tax);
 
-	const char const* GetINN() const;
+	virtual const char const* GetINN() const override;
 
-	int GetYear() const;
+	virtual int GetYear() const override;
 
-	float GetIncomeWithTax() const;
+	virtual float GetIncomeWithTax() const override;
 
-	float GetIncomeWithoutTax() const;
+	virtual float GetIncomeWithoutTax() const override;
 
-	double GetSumTax() const;
+	virtual double GetSumTax() const override;
 
-	double GetSumIncome() const;
+	virtual double GetSumIncome() const override;
 
-	double GetIncomeTaxPercentage() const;
+	virtual double GetIncomeTaxPercentage() const override;
 
-	virtual ~Taxpayer();
+	virtual ~Taxpayer() override;
 };
 
 double& operator += (double& sum_all_tax, Taxpayer& target_taxpayer); // не уверен что стоило помещать перегрузку оператора вне класса сюда же
