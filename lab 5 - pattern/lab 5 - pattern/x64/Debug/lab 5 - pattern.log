@@ -1,0 +1,11 @@
+﻿  TaxpayerStatus.cpp
+Z:\Акимов\OOP-Uni\lab 5 - pattern\TaxServiceInform.h(6,21): warning C4114: Множественное использование одного и того же квалификатора типа.
+  (компиляция исходного файла "TaxpayerStatus.cpp")
+  
+Z:\Акимов\OOP-Uni\lab 5 - pattern\TaxpayerStatus.h(65,21): warning C4114: Множественное использование одного и того же квалификатора типа.
+  (компиляция исходного файла "TaxpayerStatus.cpp")
+  
+Z:\Акимов\OOP-Uni\lab 5 - pattern\TaxpayerStatus.cpp(93,43): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+Z:\Акимов\OOP-Uni\lab 5 - pattern\TaxpayerStatus.cpp(108,19): warning C4244: аргумент: преобразование "const double" в "const float", возможна потеря данных
+Z:\Акимов\OOP-Uni\lab 5 - pattern\TaxpayerStatus.cpp(112,12): warning C4114: Множественное использование одного и того же квалификатора типа.
+  lab 5 - pattern.vcxproj -> Z:\Акимов\OOP-Uni\lab 5 - pattern\x64\Debug\lab 5 - pattern.exe
