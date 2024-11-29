@@ -1,6 +1,10 @@
 #include "PropertyTaxDeduction.h"
 
-void PropertyTaxDeduction::sumDeductionCalculator() {
+template
+PropertyTaxDeduction<13, int>;
+
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+void PropertyTaxDeduction<TAX_PERCENTAGE, TAX_FORMAT>::sumDeductionCalculator() {
 
 	if (housing_cost > MAX_HOUSING_COST) {
 		sum_deduction = MAX_HOUSING_COST * 0.13;
@@ -10,16 +14,18 @@ void PropertyTaxDeduction::sumDeductionCalculator() {
 		sum_deduction = housing_cost * 0.13;
 	}
 
-	if (sum_deduction > sum_tax) {
-		sum_deduction = sum_tax;
+	if (sum_deduction > PropertyTaxDeduction<TAX_PERCENTAGE, TAX_FORMAT>::sum_tax) {
+		sum_deduction = PropertyTaxDeduction<TAX_PERCENTAGE, TAX_FORMAT>::sum_tax;
 	}
-	sum_tax -= sum_deduction;
+	PropertyTaxDeduction<TAX_PERCENTAGE, TAX_FORMAT>::sum_tax -= sum_deduction;
 }
 
-PropertyTaxDeduction::PropertyTaxDeduction(const char* temp_INN, const int& temp_year, const float& temp_income_without_tax, const float& temp_income_with_tax) :
-	Taxpayer(temp_INN, temp_year, temp_income_without_tax, temp_income_with_tax) {}
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+PropertyTaxDeduction<TAX_PERCENTAGE, TAX_FORMAT>::PropertyTaxDeduction(const char* temp_INN, const int& temp_year, const TAX_FORMAT& temp_income_without_tax, const TAX_FORMAT& temp_income_with_tax) :
+	Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>(temp_INN, temp_year, temp_income_without_tax, temp_income_with_tax) {}
 
-void PropertyTaxDeduction::SetHousingCost(double temp_housing_cost) {
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+void PropertyTaxDeduction<TAX_PERCENTAGE, TAX_FORMAT>::SetHousingCost(const TAX_FORMAT& temp_housing_cost) {
 
 	if (temp_housing_cost < 0) {
 		throw std::exception("Ошибка: стоимость жилья не может быть отрицательной");
@@ -30,19 +36,23 @@ void PropertyTaxDeduction::SetHousingCost(double temp_housing_cost) {
 
 }
 
-void PropertyTaxDeduction::ShowTaxpayer() const {
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+void PropertyTaxDeduction<TAX_PERCENTAGE, TAX_FORMAT>::ShowTaxpayer() const {
 
-	Taxpayer::ShowTaxpayer();
+	Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::ShowTaxpayer();
 	std::cout << "Стоимость жилья: " << GetHousingCost() << std::endl;
 	std::cout << "Cумма вычета: " << GetSumDeduction() << std::endl << std::endl;
 }
 
-double PropertyTaxDeduction::GetHousingCost() const{
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+TAX_FORMAT PropertyTaxDeduction<TAX_PERCENTAGE, TAX_FORMAT>::GetHousingCost() const{
 	return housing_cost;
 }
 
-double PropertyTaxDeduction::GetSumDeduction() const {
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+TAX_FORMAT PropertyTaxDeduction<TAX_PERCENTAGE, TAX_FORMAT>::GetSumDeduction() const {
 	return sum_deduction;
 }
 
-PropertyTaxDeduction::~PropertyTaxDeduction() {};
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+PropertyTaxDeduction<TAX_PERCENTAGE, TAX_FORMAT>::~PropertyTaxDeduction() {};

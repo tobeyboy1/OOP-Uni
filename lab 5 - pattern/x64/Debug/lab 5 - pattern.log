@@ -1,0 +1,6 @@
+﻿  main.cpp
+Z:\Акимов\OOP-Uni\lab 5 - pattern\TaxServiceInform.h(9,1): warning C4114: Множественное использование одного и того же квалификатора типа.
+Z:\Акимов\OOP-Uni\lab 5 - pattern\TaxServiceInform.h(25,2): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "ITaxServiceInformation<TAX_PERCENTAGE,TAX_FORMAT>"
+Z:\Акимов\OOP-Uni\lab 5 - pattern\TaxpayerStatus.h(65,1): warning C4114: Множественное использование одного и того же квалификатора типа.
+Z:\Акимов\OOP-Uni\lab 5 - pattern\TaxpayerStatus.h(80,2): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "Taxpayer<TAX_PERCENTAGE,TAX_FORMAT>"
+  lab 5 - pattern.vcxproj -> Z:\Акимов\OOP-Uni\lab 5 - pattern\x64\Debug\lab 5 - pattern.exe

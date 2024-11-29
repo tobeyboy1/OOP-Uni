@@ -1,5 +1,8 @@
 #pragma once
-class TaxServiceInformation {
+
+
+template <int TAX_PERCENTAGE = 13, typename TAX_FORMAT = double>
+class ITaxServiceInformation { //приписка I для интерфейса
 public:
 	virtual void ShowTaxpayer() const = 0;
 
@@ -7,16 +10,16 @@ public:
 
 	virtual int GetYear() const = 0;
 
-	virtual float GetIncomeWithTax() const=0;
+	virtual TAX_FORMAT GetIncomeWithTax() const=0;
 
-	virtual float GetIncomeWithoutTax() const=0;
+	virtual TAX_FORMAT GetIncomeWithoutTax() const=0;
 
-	virtual double GetSumTax() const=0;
+	virtual TAX_FORMAT GetSumTax() const=0;
 
-	virtual double GetSumIncome() const=0;
+	virtual	TAX_FORMAT GetSumIncome() const=0;
 
-	virtual double GetIncomeTaxPercentage() const=0;
+	virtual TAX_FORMAT GetIncomeTaxPercentage() const=0;
 
-	virtual ~TaxServiceInformation() {};
+	virtual ~ITaxServiceInformation() {};
 
 };

@@ -1,8 +1,10 @@
 #include "TaxpayerStatus.h"
 
+template
+Taxpayer<13, int>;
 
-
-const int Taxpayer::getCurrentYear() {
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+const int Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::getCurrentYear() {
 
 	const int BEGIN_OF_COUNT = 1900;
 
@@ -18,13 +20,19 @@ const int Taxpayer::getCurrentYear() {
 	return currentYear;
 }
 
-
-void Taxpayer::sumIncomeCalculator() {
-	sum_income = double(income_with_tax) * (1 - (income_tax_percentage/100.0)) + double(income_without_tax);
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+void Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::sumIncomeCalculator() {
+	sum_income = TAX_FORMAT(income_with_tax) * (1 - ((double)income_tax_percentage/100)) + TAX_FORMAT(income_without_tax);
 }
 
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+void Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::sumTaxCalculator() {
+	sum_tax = (TAX_FORMAT)income_with_tax * ((double)income_tax_percentage/100);
 
-Taxpayer::Taxpayer(const char* temp_INN, const int& temp_year, const float& temp_income_without_tax, const float& temp_income_with_tax) {
+}
+
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::Taxpayer(const char* temp_INN, const int& temp_year, const TAX_FORMAT& temp_income_without_tax, const TAX_FORMAT& temp_income_with_tax) {
 
 	if (temp_year < min_year) {
 		throw std::exception("Ошибка: нельзя указать год меньше 1900-го" + 1);
@@ -62,7 +70,7 @@ Taxpayer::Taxpayer(const char* temp_INN, const int& temp_year, const float& temp
 	income_without_tax += temp_income_without_tax;
 	income_with_tax += temp_income_with_tax;
 
-	sumTaxCalculator<income_tax_percentage,double>(); //пока вручну менять тип, если нужно попробовать сократить использование функции до 1 раза
+	sumTaxCalculator(); //пока вручну менять тип, если нужно попробовать сократить использование функции до 1 раза
 	sumIncomeCalculator();
 
 	memset(INN, 0, sizeof(char) * (INN_SIZE + 1));
@@ -70,32 +78,34 @@ Taxpayer::Taxpayer(const char* temp_INN, const int& temp_year, const float& temp
 
 }
 
-
- void Taxpayer::AddIncome(const float& temp_income, bool with_tax) { //почему-то при вводе параметров даёт ввести число + забыл что сказали про именование флагов
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+ void Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::AddIncome(const TAX_FORMAT& temp_income, bool with_tax) { //почему-то при вводе параметров даёт ввести число + забыл что сказали про именование флагов
 
 	if (temp_income < 0) {
 		throw std::exception("Ошибка: доход не может быть отрицательным");
 	}
 	else if (!with_tax) {
 		income_without_tax += temp_income;
+		
 	}
 	else {
 		income_with_tax += temp_income;
 	}
-	sumTaxCalculator<income_tax_percentage,double>();
+	sumTaxCalculator();
 	sumIncomeCalculator();
 }
-
- void Taxpayer::AddIncome(const float& temp_income_after_tax) {
+ template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+ void Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::AddIncome(const TAX_FORMAT& temp_income_after_tax) {
 	 if (temp_income_after_tax < 0) {
 		 throw std::exception("Ошибка: доход не может быть отрицательным");
 	 }
 	 income_with_tax += temp_income_after_tax/(1- (income_tax_percentage / 100.0));
-	 sumTaxCalculator<income_tax_percentage,double>();
+	 sumTaxCalculator();
 	 sumIncomeCalculator();
  }
 
- void Taxpayer::ShowTaxpayer() const {
+ template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+ void Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::ShowTaxpayer() const {
 	 std::cout << "ИНН: " << GetINN() << std::endl;
 	 std::cout << "Год: " << GetYear() << std::endl;
 	 std::cout << "Налогооблагаемый доход: " << GetIncomeWithTax() << std::endl;
@@ -104,42 +114,51 @@ Taxpayer::Taxpayer(const char* temp_INN, const int& temp_year, const float& temp
 	 std::cout << "Сумма доходов: " << GetSumIncome() << std::endl << std::endl;
  }
 
- Taxpayer& Taxpayer::operator >> (const double& temp_income_after_tax){
+ template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+ Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>& Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::operator >> (const TAX_FORMAT& temp_income_after_tax){
 	 this->AddIncome(temp_income_after_tax);
 	 return *this;
  }
 
-const char const* Taxpayer::GetINN() const {
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+const char const* Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::GetINN() const {
 	 return INN;
  }
-int Taxpayer::GetYear() const {
+
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+int Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::GetYear() const {
 	return year;
 }
 
- float Taxpayer::GetIncomeWithTax() const {
+template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+TAX_FORMAT Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::GetIncomeWithTax() const {
 	 return income_with_tax;
  }
 
- float Taxpayer:: GetIncomeWithoutTax() const {
+ template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+ TAX_FORMAT Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>:: GetIncomeWithoutTax() const {
 	 return income_without_tax;
  }
 
- double Taxpayer::GetSumTax() const {
+ template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+ TAX_FORMAT Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::GetSumTax() const {
 	 return sum_tax;
  }
 
- double Taxpayer::GetSumIncome() const {
+ template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+ TAX_FORMAT Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::GetSumIncome() const {
 	 return sum_income;
  }
- double Taxpayer::GetIncomeTaxPercentage() const {
+
+ template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+ TAX_FORMAT Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::GetIncomeTaxPercentage() const {
 	 return income_tax_percentage;
  }
 
- Taxpayer::~Taxpayer() {
+ template <int TAX_PERCENTAGE, typename TAX_FORMAT>
+ Taxpayer<TAX_PERCENTAGE, TAX_FORMAT>::~Taxpayer() {
 	 delete[] INN;
  }
 
- double& operator += (double& sum_all_tax, Taxpayer& target_taxpayer) { // не уверен что стоило помещать перегрузку оператора вне класса сюда же
-	 return (sum_all_tax += target_taxpayer.GetSumTax());
- };
+
 
